@@ -11,7 +11,6 @@
         <div class ="login-box">
         <img src="img/favicon.png" alt="Logo" class="logo">   
             <h1>Bienvenido</h1>
-            
             <?php if (isset($_GET['error'])): ?>
                 <p style="color: red; margin-bottom: 15px;">
                     <?php echo $_GET['error'] === 'vacio' ? 'Completa todos los campos.' : 'Correo o contraseña incorrectos.'; ?>
