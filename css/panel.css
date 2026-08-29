@@ -59,9 +59,9 @@
     transition: flex 0.3s;
 }
 
-.empresa-card:nth-child(1) { background-color: #ee5a04; }
-.empresa-card:nth-child(2) { background-color: #c94c04; }
-.empresa-card:nth-child(3) { background-color: #a73e01; }
+.empresa-card:nth-child(1) { background-color: #6d6a68; }
+.empresa-card:nth-child(2) { background-color: #525150; }
+.empresa-card:nth-child(3) { background-color: #5c5a59; }
 
 .empresa-card:hover {
     flex: 1.15;
