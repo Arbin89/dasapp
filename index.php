@@ -8,8 +8,7 @@
 </head>
 <body>
     <div class="login-container">
-        <div class ="login-box">
-        <img src="img/favicon.png" alt="Logo" class="logo">   
+        <div class ="login-box"> 
             <h1>Bienvenido</h1>
             <?php if (isset($_GET['error'])): ?>
                 <p style="color: red; margin-bottom: 15px;">

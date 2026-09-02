@@ -16,12 +16,13 @@ $empresas = $stmt->fetchAll();
     <meta charset="UTF-8">
     <title>Selecciona una empresa</title>
      <link rel="icon" type="image/png" href="img/favicon.png">
-     <link rel="stylesheet" href="css/style.css">
-     <link rel="stylesheet" href="css/panel.css">
+     <link rel="stylesheet" href="css/style.css?v=1">
+     <link rel="stylesheet" href="css/panel.css?v=1">
 </head>
-<body style="font-family: Arial; padding: 40px;">
+<body>
     <div class="panel-container">
     <a href="php/logout.php" class="logout-link">Cerrar sesión</a>
+    <a href="oficina.php" class="oficina-link">Oficina</a>
         <h1>Selecciona una empresa</h1>
          <p>Bienvenido, <?php echo htmlspecialchars($_SESSION['usuario_nombre']); ?></p>
 
