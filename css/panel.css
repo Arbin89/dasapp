@@ -200,3 +200,43 @@
 .volver-link:hover {
     text-decoration: underline;
 }
+
+.detalle-layout {
+    display: flex;
+    align-items: flex-start;
+    gap: 40px;
+    padding: 30px 40px;
+}
+
+.detalle-layout h1 {
+    flex-shrink: 0;
+    padding: 0;
+    margin: 0;
+    padding-top: 10px;
+    font-size: 42px;
+    max-width: 280px;
+}
+
+.secciones-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    flex: 1;
+}
+
+.seccion-card {
+    background-color: #1a1a2e;
+    color: #fff;
+    padding: 30px 20px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 15px;
+    text-align: center;
+    transition: transform 0.2s, background-color 0.2s;
+}
+
+.seccion-card:hover {
+    background-color: #26264a;
+    transform: translateY(-4px);
+}
