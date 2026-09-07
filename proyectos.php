@@ -55,6 +55,7 @@ $proyectos = $stmt->fetchAll();
                             <?php echo htmlspecialchars($proyecto['estado']); ?>
                         </span>
                          <a href="proyecto_detalle.php?id=<?php echo $proyecto['id']; ?>" class="btn-ver">Ver</a>
+                         <a href="php/eliminar_proyecto.php?id=<?php echo $proyecto['id']; ?>&empresa_id=<?php echo $empresa_id; ?>" class="btn-eliminar" onclick="return confirm('¿Seguro que quieres eliminar este proyecto? Esta acción no se puede deshacer.');">Eliminar</a>
                     </div>
                 <?php endforeach; ?>
             </div>
