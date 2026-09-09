@@ -43,6 +43,12 @@ $proyectos = $stmt->fetchAll();
     <a href="dashboard.php" class="volver-link">← Volver a selección de empresa</a>
     <h1>Proyectos de <?php echo htmlspecialchars($empresa['nombre']); ?></h1>
 
+    <?php if (isset($_GET['creado'])): ?>
+        <div id="mensaje-exito" class="mensaje-exito">Proyecto creado correctamente</div>
+    <?php endif; ?>
+
+    <a href="proyecto_nuevo.php?empresa_id=<?php echo $empresa_id; ?>" class="btn-nuevo-proyecto">+ Nuevo proyecto</a>
+
     <?php if (count($proyectos) === 0): ?>
         <p>Esta empresa aun no tiene proyectos registrados</p>
         <?php else: ?>
@@ -51,6 +57,10 @@ $proyectos = $stmt->fetchAll();
                     <div class="proyecto-item">
                       <h3><?php echo htmlspecialchars($proyecto['nombre']); ?></h3>
                         <p><?php echo htmlspecialchars($proyecto['descripcion']); ?></p>
+                        <p class="proyecto-fecha">Inicio: <?php echo date('d/m/Y', strtotime($proyecto['fecha_inicio'])); ?></p>
+                        <?php if ($proyecto['estado'] === 'Completado' && $proyecto['fecha_completado']): ?>
+    <p class="proyecto-fecha-completado">Completado el: <?php echo date('d/m/Y', strtotime($proyecto['fecha_completado'])); ?></p>
+<?php endif; ?>
                         <span class="proyecto-estado <?php echo $proyecto['estado'] === 'En proceso' ? 'en-proceso' : ''; ?>">
                             <?php echo htmlspecialchars($proyecto['estado']); ?>
                         </span>
@@ -62,6 +72,16 @@ $proyectos = $stmt->fetchAll();
         <?php endif; ?>
     </div>
 </body>
+
+<script>
+    const mensaje = document.getElementById('mensaje-exito');
+    if (mensaje) {
+        setTimeout(() => {
+            mensaje.style.display = 'none';
+        }, 3000);
+    }
+</script>
+
 </html>  
 
 
