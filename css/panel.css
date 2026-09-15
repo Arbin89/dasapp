@@ -475,3 +475,49 @@
     font-size: 13px;
     margin: 0 20px 10px 20px;
 }
+
+.categorias-tabs {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin: 25px 20px 20px 20px;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 12px;
+}
+
+.tab-categoria {
+    padding: 8px 20px;
+    border-radius: 20px;
+    background-color: #f0f0f0;
+    color: #666;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.tab-categoria:hover {
+    background-color: #e0e0e0;
+}
+
+.tab-activa {
+    background-color: #1a1a2e;
+    color: #fff;
+}
+
+.tab-activa:hover {
+    background-color: #1a1a2e;
+}
+
+.btn-eliminar-categoria {
+    display: inline-block;
+    margin: 0 20px 20px 20px;
+    color: #c0392b;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.btn-eliminar-categoria:hover {
+    text-decoration: underline;
+}
