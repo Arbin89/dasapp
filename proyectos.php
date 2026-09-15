@@ -26,7 +26,6 @@ if (!$empresa) {
 $stmt = $pdo->prepare('SELECT * FROM proyectos WHERE empresa_id = ? ORDER BY fecha_inicio DESC');
 $stmt->execute([$empresa_id]);
 $proyectos = $stmt->fetchAll();
-
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -37,51 +36,52 @@ $proyectos = $stmt->fetchAll();
     <link rel="stylesheet" href="css/style.css?v=1">
     <link rel="stylesheet" href="css/panel.css?v=1">
 </head>
-
 <body>
-    <div class="panel-container2">
-    <a href="dashboard.php" class="volver-link">← Volver a selección de empresa</a>
-    <h1>Proyectos de <?php echo htmlspecialchars($empresa['nombre']); ?></h1>
+    <div class="panel-container">
+        <a href="dashboard.php" class="volver-link">← Volver a selección de empresa</a>
+        <h1>Proyectos de <?php echo htmlspecialchars($empresa['nombre']); ?></h1>
 
-    <?php if (isset($_GET['creado'])): ?>
-        <div id="mensaje-exito" class="mensaje-exito">Proyecto creado correctamente</div>
-    <?php endif; ?>
+        <?php if (isset($_GET['creado'])): ?>
+            <div id="mensaje-exito" class="mensaje-exito">✓ Proyecto creado correctamente</div>
+        <?php endif; ?>
+        <?php if (isset($_GET['eliminado'])): ?>
+            <div id="mensaje-exito" class="mensaje-exito">✓ Proyecto eliminado correctamente</div>
+        <?php endif; ?>
 
-    <a href="proyecto_nuevo.php?empresa_id=<?php echo $empresa_id; ?>" class="btn-nuevo-proyecto">+ Nuevo proyecto</a>
+        <a href="proyecto_nuevo.php?empresa_id=<?php echo $empresa_id; ?>" class="btn-nuevo-proyecto">+ Nuevo proyecto</a>
 
-    <?php if (count($proyectos) === 0): ?>
-        <p>Esta empresa aun no tiene proyectos registrados</p>
+        <?php if (count($proyectos) === 0): ?>
+            <p>Esta empresa aún no tiene proyectos registrados</p>
         <?php else: ?>
             <div class="proyectos-lista">
                 <?php foreach ($proyectos as $proyecto): ?>
                     <div class="proyecto-item">
-                      <h3><?php echo htmlspecialchars($proyecto['nombre']); ?></h3>
+                        <h3><?php echo htmlspecialchars($proyecto['nombre']); ?></h3>
                         <p><?php echo htmlspecialchars($proyecto['descripcion']); ?></p>
                         <p class="proyecto-fecha">Inicio: <?php echo date('d/m/Y', strtotime($proyecto['fecha_inicio'])); ?></p>
                         <?php if ($proyecto['estado'] === 'Completado' && $proyecto['fecha_completado']): ?>
-    <p class="proyecto-fecha-completado">Completado el: <?php echo date('d/m/Y', strtotime($proyecto['fecha_completado'])); ?></p>
-<?php endif; ?>
+                            <p class="proyecto-fecha-completado">Completado el: <?php echo date('d/m/Y', strtotime($proyecto['fecha_completado'])); ?></p>
+                        <?php endif; ?>
                         <span class="proyecto-estado <?php echo $proyecto['estado'] === 'En proceso' ? 'en-proceso' : ''; ?>">
                             <?php echo htmlspecialchars($proyecto['estado']); ?>
                         </span>
-                         <a href="proyecto_detalle.php?id=<?php echo $proyecto['id']; ?>" class="btn-ver">Ver</a>
-                         <a href="php/eliminar_proyecto.php?id=<?php echo $proyecto['id']; ?>&empresa_id=<?php echo $empresa_id; ?>" class="btn-eliminar" onclick="return confirm('¿Seguro que quieres eliminar este proyecto? Esta acción no se puede deshacer.');">Eliminar</a>
+                        <a href="proyecto_detalle.php?id=<?php echo $proyecto['id']; ?>" class="btn-ver">Ver</a>
+                        <a href="php/eliminar_proyecto.php?id=<?php echo $proyecto['id']; ?>&empresa_id=<?php echo $empresa_id; ?>" class="btn-eliminar" onclick="return confirm('¿Seguro que quieres eliminar este proyecto? Esta acción no se puede deshacer.');">Eliminar</a>
                     </div>
                 <?php endforeach; ?>
             </div>
         <?php endif; ?>
     </div>
+
+    <script>
+        const mensaje = document.getElementById('mensaje-exito');
+        if (mensaje) {
+            setTimeout(() => {
+                mensaje.style.display = 'none';
+            }, 3000);
+        }
+    </script>
 </body>
-
-<script>
-    const mensaje = document.getElementById('mensaje-exito');
-    if (mensaje) {
-        setTimeout(() => {
-            mensaje.style.display = 'none';
-        }, 3000);
-    }
-</script>
-
-</html>  
+</html>
 
 
