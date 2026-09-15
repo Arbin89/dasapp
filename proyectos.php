@@ -38,6 +38,7 @@ $proyectos = $stmt->fetchAll();
 </head>
 <body>
     <div class="panel-container">
+        <?php $rutaBase = ''; require 'php/admin_menu.php'; ?>
         <a href="dashboard.php" class="volver-link">← Volver a selección de empresa</a>
         <h1>Proyectos de <?php echo htmlspecialchars($empresa['nombre']); ?></h1>
 

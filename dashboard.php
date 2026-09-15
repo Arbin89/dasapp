@@ -22,7 +22,7 @@ $empresas = $stmt->fetchAll();
 <body>
     <div class="panel-container">
     <a href="php/logout.php" class="logout-link">Cerrar sesión</a>
-    <a href="oficina.php" class="oficina-link">Oficina</a>
+    <?php $rutaBase = ''; require 'php/admin_menu.php'; ?>
         <h1>Selecciona una empresa</h1>
          <p>Bienvenido, <?php echo htmlspecialchars($_SESSION['usuario_nombre']); ?></p>
 

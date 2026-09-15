@@ -44,6 +44,7 @@ $secciones = [
 </head>
 <body>
     <div class="panel-container">
+        <?php $rutaBase = ''; require 'php/admin_menu.php'; ?>
         <a href="proyectos.php?empresa_id=<?php echo $proyecto['empresa_id']; ?>" class="volver-link">← Volver a proyectos</a>
 
         <div class="detalle-layout">

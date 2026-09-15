@@ -40,6 +40,17 @@ foreach ($stmt->fetchAll() as $plano) {
 $stmt = $pdo->prepare('DELETE FROM planos WHERE proyecto_id = ?');
 $stmt->execute([$id]);
 
+// Borrar archivos físicos y registros de fotos
+$stmt = $pdo->prepare('SELECT ruta_archivo FROM fotos WHERE proyecto_id = ?');
+$stmt->execute([$id]);
+foreach ($stmt->fetchAll() as $foto) {
+    if (file_exists('../' . $foto['ruta_archivo'])) {
+        unlink('../' . $foto['ruta_archivo']);
+    }
+}
+$stmt = $pdo->prepare('DELETE FROM fotos WHERE proyecto_id = ?');
+$stmt->execute([$id]);
+
 // 4. Finalmente, borrar el proyecto
 $stmt = $pdo->prepare('DELETE FROM proyectos WHERE id = ?');
 $stmt->execute([$id]);
