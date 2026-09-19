@@ -51,6 +51,10 @@ foreach ($stmt->fetchAll() as $foto) {
 $stmt = $pdo->prepare('DELETE FROM fotos WHERE proyecto_id = ?');
 $stmt->execute([$id]);
 
+// Quitar las asignaciones de contratistas de este proyecto (no borra los contratistas en sí)
+$stmt = $pdo->prepare('DELETE FROM proyecto_contratistas WHERE proyecto_id = ?');
+$stmt->execute([$id]);
+
 // 4. Finalmente, borrar el proyecto
 $stmt = $pdo->prepare('DELETE FROM proyectos WHERE id = ?');
 $stmt->execute([$id]);

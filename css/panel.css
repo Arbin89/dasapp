@@ -651,3 +651,67 @@
     color: #666;
     margin-bottom: 4px;
 }
+
+.contratistas-lista {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.contratista-fila {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background-color: #fff;
+    padding: 12px 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+}
+
+.contratista-foto-chica {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    object-fit: cover;
+    font-size: 18px;
+}
+
+.contratista-nombre-fila {
+    flex: 1;
+    font-weight: 600;
+    color: #1a1a2e;
+}
+
+.contratista-foto-grande {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+    margin-bottom: 15px;
+    font-size: 50px;
+}
+
+.contratista-datos {
+    background-color: #fff;
+    border-radius: 12px;
+    padding: 25px 30px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+    max-width: 500px;
+}
+
+.contratista-datos p {
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: #333;
+}
+
+.contratista-datos h3 {
+    font-size: 14px;
+    color: #1a1a2e;
+    margin-top: 18px;
+    margin-bottom: 6px;
+}

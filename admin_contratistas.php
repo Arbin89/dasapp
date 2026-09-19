@@ -8,6 +8,8 @@ require_once 'php/config.php';
 
 $stmt = $pdo->query('SELECT * FROM contratistas ORDER BY nombre ASC');
 $contratistas = $stmt->fetchAll();
+
+$volver = $_GET['volver'] ?? 'dashboard.php';
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -20,7 +22,7 @@ $contratistas = $stmt->fetchAll();
 </head>
 <body>
     <div class="panel-container">
-        <a href="javascript:history.back()" class="volver-link">← Volver</a>
+        <a href="<?php echo htmlspecialchars($volver); ?>" class="volver-link">← Volver</a>
         <h1>Contratistas</h1>
 
         <?php if (isset($_GET['creado'])): ?>
@@ -35,18 +37,16 @@ $contratistas = $stmt->fetchAll();
         <?php if (count($contratistas) === 0): ?>
             <p>Aún no hay contratistas registrados.</p>
         <?php else: ?>
-            <div class="contratistas-grid">
+            <div class="contratistas-lista">
                 <?php foreach ($contratistas as $c): ?>
-                    <div class="contratista-card">
+                    <div class="contratista-fila">
                         <?php if ($c['foto']): ?>
-                            <img src="<?php echo htmlspecialchars($c['foto']); ?>" class="contratista-foto">
+                            <img src="<?php echo htmlspecialchars($c['foto']); ?>" class="contratista-foto-chica">
                         <?php else: ?>
-                            <div class="contratista-foto contratista-foto-vacia">👤</div>
+                            <div class="contratista-foto-chica contratista-foto-vacia">👤</div>
                         <?php endif; ?>
-                        <h3><?php echo htmlspecialchars($c['nombre']); ?></h3>
-                        <p><?php echo htmlspecialchars($c['telefono'] ?: 'Sin teléfono'); ?></p>
-                        <p><?php echo htmlspecialchars($c['cedula'] ?: 'Sin cédula'); ?></p>
-                        <a href="php/eliminar_contratista.php?id=<?php echo $c['id']; ?>" class="btn-eliminar" onclick="return confirm('¿Eliminar a <?php echo htmlspecialchars($c['nombre']); ?> por completo? Se quitará de TODOS los proyectos donde esté asignado.');">Eliminar</a>
+                        <span class="contratista-nombre-fila"><?php echo htmlspecialchars($c['nombre']); ?></span>
+                        <a href="admin_contratista_detalle.php?id=<?php echo $c['id']; ?>&volver=<?php echo urlencode($volver); ?>" class="btn-ver">Ver</a>
                     </div>
                 <?php endforeach; ?>
             </div>
