@@ -20,6 +20,8 @@ if (!$c) {
     header('Location: admin_contratistas.php');
     exit;
 }
+
+$volver = $_GET['volver'] ?? 'admin_contratistas.php';
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -33,11 +35,12 @@ if (!$c) {
 </head>
 <body>
     <div class="panel-container">
-        <a href="admin_contratista_detalle.php?id=<?php echo $c['id']; ?>" class="volver-link">← Volver al detalle</a>
+        <a href="admin_contratista_detalle.php?id=<?php echo $c['id']; ?>&volver=<?php echo urlencode($volver); ?>" class="volver-link">← Volver al detalle</a>
         <h1>Editar contratista</h1>
 
         <form action="php/actualizar_contratista.php" method="POST" enctype="multipart/form-data" class="form-proyecto">
             <input type="hidden" name="id" value="<?php echo $c['id']; ?>">
+            <input type="hidden" name="volver" value="<?php echo htmlspecialchars($volver); ?>">
             <input type="hidden" name="foto_actual" value="<?php echo htmlspecialchars($c['foto'] ?? ''); ?>">
 
             <label for="nombre">Nombre</label>

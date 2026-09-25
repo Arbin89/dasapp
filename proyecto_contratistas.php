@@ -36,10 +36,11 @@ $disponibles = $stmt->fetchAll();
     <title>Contratistas - <?php echo htmlspecialchars($proyecto['nombre']); ?></title>
     <link rel="icon" type="image/png" href="img/favicon.png">
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/panel.css">
+    <link rel="stylesheet" href="css/panel.css?v=1">
 </head>
 <body>
     <div class="panel-container">
+        <?php $rutaBase = ''; require 'php/admin_menu.php'; ?>
         <a href="proyecto_detalle.php?id=<?php echo $proyecto_id; ?>" class="volver-link">← Volver al proyecto</a>
         <h1>Contratistas de <?php echo htmlspecialchars($proyecto['nombre']); ?></h1>
 
@@ -47,25 +48,28 @@ $disponibles = $stmt->fetchAll();
             <div id="mensaje-exito" class="mensaje-exito">✓ Contratista agregado al proyecto</div>
         <?php endif; ?>
 
-        <div class="form-upload">
-            <?php if (count($disponibles) > 0): ?>
-                <form action="php/asignar_contratista.php" method="POST" style="display: flex; gap: 12px;">
-                    <input type="hidden" name="proyecto_id" value="<?php echo $proyecto_id; ?>">
-                    <select name="contratista_id" required>
-                        <?php foreach ($disponibles as $d): ?>
-                            <option value="<?php echo $d['id']; ?>"><?php echo htmlspecialchars($d['nombre']); ?></option>
-                        <?php endforeach; ?>
-                    </select>
-                    <button type="submit">Agregar existente</button>
-                </form>
-            <?php endif; ?>
+        <div class="acciones-contratistas">
             <a href="admin_contratista_nuevo.php?proyecto_id=<?php echo $proyecto_id; ?>" class="btn-nuevo-proyecto">+ Crear nuevo contratista</a>
         </div>
+
+        <?php if (count($disponibles) > 0): ?>
+            <form action="php/asignar_contratista.php" method="POST" class="form-upload select">
+                <input type="hidden" name="proyecto_id" value="<?php echo $proyecto_id; ?>">
+                <select name="contratista_id" required class="form-upload">
+                    <?php foreach ($disponibles as $d): ?>
+                        <option value="<?php echo $d['id']; ?>"><?php echo htmlspecialchars($d['nombre']); ?></option>
+                    <?php endforeach; ?>
+                </select>
+                <button type="submit" class= "btn-nuevo-proyecto">Agregar existente</button>
+            </form>
+            
+        <?php endif; ?>
+        
 
         <?php if (count($asignados) === 0): ?>
             <p>Aún no hay contratistas asignados a este proyecto.</p>
         <?php else: ?>
-            <div class="contratistas-lista" style="margin: 20px 20px;">
+            <div class="contratistas-lista">
                 <?php foreach ($asignados as $a): ?>
                     <div class="contratista-fila">
                         <?php if ($a['foto']): ?>

@@ -32,7 +32,7 @@ $volver = $_GET['volver'] ?? 'dashboard.php';
             <div id="mensaje-exito" class="mensaje-exito">✓ Contratista eliminado correctamente</div>
         <?php endif; ?>
 
-        <a href="admin_contratista_nuevo.php" class="btn-nuevo-proyecto">+ Nuevo contratista</a>
+        <a href="admin_contratista_nuevo.php" class="btn-nuevo-proyecto">Nuevo contratista</a>
 
         <?php if (count($contratistas) === 0): ?>
             <p>Aún no hay contratistas registrados.</p>
@@ -46,7 +46,7 @@ $volver = $_GET['volver'] ?? 'dashboard.php';
                             <div class="contratista-foto-chica contratista-foto-vacia">👤</div>
                         <?php endif; ?>
                         <span class="contratista-nombre-fila"><?php echo htmlspecialchars($c['nombre']); ?></span>
-                        <a href="admin_contratista_detalle.php?id=<?php echo $c['id']; ?>&volver=<?php echo urlencode($volver); ?>" class="btn-ver">Ver</a>
+                        <a href="admin_contratista_detalle.php?id=<?php echo $c['id']; ?>&volver=<?php echo urlencode('admin_contratistas.php?volver=' . urlencode($volver)); ?>" class="btn-ver">Ver</a>
                     </div>
                 <?php endforeach; ?>
             </div>

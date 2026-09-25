@@ -57,6 +57,7 @@ foreach ($categorias as $cat) {
 </head>
 <body>
     <div class="panel-container">
+        <?php $rutaBase = ''; require 'php/admin_menu.php'; ?>
         <a href="proyecto_detalle.php?id=<?php echo $proyecto_id; ?>" class="volver-link">← Volver al proyecto</a>
         <h1>Documentos de <?php echo htmlspecialchars($proyecto['nombre']); ?></h1>
 

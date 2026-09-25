@@ -379,12 +379,14 @@
 }
 
 .form-upload {
-    display: flex;
+   
     gap: 12px;
     align-items: center;
     margin: 0 20px 30px 20px;
     flex-wrap: wrap;
 }
+
+
 
 .form-upload input[type="file"] {
     font-size: 14px;
@@ -714,4 +716,21 @@
     color: #1a1a2e;
     margin-top: 18px;
     margin-bottom: 6px;
+}
+
+.form-upload select {
+ 
+    align-items: center;
+    padding: 10px 14px;
+    border: 1.5px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 14px;
+    font-family: 'Montserrat', Arial, sans-serif;
+    background-color: #fff;
+    min-width: 200px;
+    
+}
+
+.acciones-contratistas {
+    margin: 0 20px 15px 20px;
 }

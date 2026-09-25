@@ -12,6 +12,8 @@ if (!$id) {
     exit;
 }
 
+$volver = $_POST['volver'] ?? 'admin_contratistas.php';
+
 $nombre = trim($_POST['nombre'] ?? '');
 $telefono = trim($_POST['telefono'] ?? '');
 $cedula = trim($_POST['cedula'] ?? '');
@@ -38,5 +40,5 @@ if (isset($_FILES['foto']) && $_FILES['foto']['error'] === UPLOAD_ERR_OK) {
 $stmt = $pdo->prepare('UPDATE contratistas SET nombre = ?, telefono = ?, cedula = ?, direccion = ?, latitud = ?, longitud = ?, foto = ?, ref1_nombre = ?, ref1_telefono = ?, ref2_nombre = ?, ref2_telefono = ? WHERE id = ?');
 $stmt->execute([$nombre, $telefono, $cedula, $direccion, $latitud, $longitud, $rutaFoto, $ref1_nombre, $ref1_telefono, $ref2_nombre, $ref2_telefono, $id]);
 
-header('Location: ../admin_contratista_detalle.php?id=' . $id . '&actualizado=1');
+header('Location: ../admin_contratista_detalle.php?id=' . $id . '&actualizado=1&volver=' . urlencode($volver));
 exit;

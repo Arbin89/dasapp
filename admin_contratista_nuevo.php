@@ -18,7 +18,7 @@ require_once 'php/config.php';
 </head>
 <body>
     <div class="panel-container">
-        <a href="admin_contratistas.php" class="volver-link">← Volver a contratistas</a>
+        <a href="javascript:history.back()" class="volver-link" >← Volver a contratistas</a>
         <h1>Nuevo contratista</h1>
 
         <form action="php/crear_contratista.php" method="POST" enctype="multipart/form-data" class="form-proyecto">

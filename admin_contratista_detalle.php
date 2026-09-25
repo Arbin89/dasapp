@@ -38,7 +38,7 @@ $proyectosAsignados = $stmtProy->fetchAll();
 </head>
 <body>
     <div class="panel-container">
-        <a href="admin_contratistas.php?volver=<?php echo urlencode($volver); ?>" class="volver-link">← Volver a contratistas</a>
+        <a href="<?php echo htmlspecialchars($volver); ?>" class="volver-link">← Volver</a>
 
         <?php if (isset($_GET['actualizado'])): ?>
             <div id="mensaje-exito" class="mensaje-exito">✓ Datos actualizados correctamente</div>
@@ -53,7 +53,7 @@ $proyectosAsignados = $stmtProy->fetchAll();
                 <?php endif; ?>
                 <h1><?php echo htmlspecialchars($c['nombre']); ?></h1>
 
-                <a href="admin_contratista_editar.php?id=<?php echo $c['id']; ?>" class="btn-completar">Editar datos</a>
+                <a href="admin_contratista_editar.php?id=<?php echo $c['id']; ?>&volver=<?php echo urlencode($volver); ?>" class="btn-completar">Editar datos</a>
                 <a href="php/eliminar_contratista.php?id=<?php echo $c['id']; ?>" class="btn-eliminar" onclick="return confirm('¿Eliminar a <?php echo htmlspecialchars($c['nombre']); ?> por completo? Se quitará de TODOS los proyectos donde esté asignado.');">Eliminar contratista</a>
             </div>
 
