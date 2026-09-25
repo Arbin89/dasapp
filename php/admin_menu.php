@@ -5,5 +5,6 @@
     <div id="admin-dropdown-menu" class="admin-dropdown-menu">
         <a href="<?php echo $rutaBase ?? ''; ?>oficina.php">Oficina</a>
         <a href="<?php echo $rutaBase ?? ''; ?>admin_contratistas.php?volver=<?php echo urlencode($_SERVER['REQUEST_URI']); ?>">Contratistas</a>
+        <a href="<?php echo $retaBase ?? ''; ?>admin_usuarios.php">Usuarios</a>
     </div>
 </div>
