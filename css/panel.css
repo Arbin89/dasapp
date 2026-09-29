@@ -4,6 +4,7 @@
     padding: 0;
     text-align: center;
     position: relative;
+    background-color: #c6c5c5;
 }
 
 .panel-container2 {
@@ -565,7 +566,7 @@
 }
 
 .admin-dropdown-btn {
-    background-color: #fff;
+    background-color: #d4d1d1;
     border: 1.5px solid #1a1a2e;
     color: #1a1a2e;
     padding: 8px 18px;

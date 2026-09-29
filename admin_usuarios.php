@@ -8,6 +8,7 @@ require_once 'php/config.php';
 
 $stmt = $pdo->query('SELECT id, nombre, email, rol FROM usuarios ORDER BY nombre ASC');
 $usuarios = $stmt->fetchAll();
+$volver = $_GET['volver'] ?? 'dashboard.php';
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -20,7 +21,7 @@ $usuarios = $stmt->fetchAll();
 </head>
 <body>
     <div class="panel-container">
-        <a href="admin.php" class="volver-link">← Volver al panel admin</a>
+        <a href="<?php echo htmlspecialchars($volver); ?>" class="volver-link">← Volver</a>
         <h1>Usuarios</h1>
 
         <?php if (isset($_GET['creado'])): ?>
