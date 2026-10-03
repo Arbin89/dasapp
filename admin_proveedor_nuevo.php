@@ -14,6 +14,7 @@ require_once 'php/config.php';
     <link rel="icon" type="image/png" href="img/favicon.png">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/panel.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 </head>
 <body>
     <div class="panel-container">
@@ -25,7 +26,13 @@ require_once 'php/config.php';
             <input type="text" id="nombre" name="nombre" required>
 
             <label for="direccion">Dirección</label>
-            <input type="text" id="direccion" name="direccion">
+            <input type="text" id="direccion" name="direccion" placeholder="Escribe la dirección o selecciónala en el mapa">
+
+            <div id="mapa-proveedor" style="height: 300px; border-radius: 10px; margin-top: 10px;"></div>
+            <p style="font-size: 12px; color: #999; margin-top: 8px;">Haz clic en el mapa para marcar la ubicación exacta.</p>
+
+            <input type="hidden" id="latitud" name="latitud">
+            <input type="hidden" id="longitud" name="longitud">
 
             <label for="rnc_cedula">RNC o Cédula</label>
             <input type="text" id="rnc_cedula" name="rnc_cedula">
@@ -63,5 +70,35 @@ require_once 'php/config.php';
             <button type="submit">Crear proveedor</button>
         </form>
     </div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script>
+        const mapa = L.map('mapa-proveedor').setView([19.4517, -70.6970], 13);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(mapa);
+
+        let marcador = null;
+
+        mapa.on('click', function(e) {
+            const lat = e.latlng.lat;
+            const lng = e.latlng.lng;
+
+            document.getElementById('latitud').value = lat;
+            document.getElementById('longitud').value = lng;
+
+            if (marcador) {
+                marcador.setLatLng(e.latlng);
+            } else {
+                marcador = L.marker(e.latlng).addTo(mapa);
+            }
+
+            fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lng}`)
+                .then(res => res.json())
+                .then(data => {
+                    if (data.display_name) {
+                        document.getElementById('direccion').value = data.display_name;
+                    }
+                });
+        });
+    </script>
 </body>
 </html>

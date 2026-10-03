@@ -55,6 +55,10 @@ $stmt->execute([$id]);
 $stmt = $pdo->prepare('DELETE FROM proyecto_contratistas WHERE proyecto_id = ?');
 $stmt->execute([$id]);
 
+// Quitar las asignaciones de proveedores de este proyecto (no borra los proveedores en sí)
+$stmt = $pdo->prepare('DELETE FROM proyecto_proveedores WHERE proyecto_id = ?');
+$stmt->execute([$id]);
+
 // 4. Finalmente, borrar el proyecto
 $stmt = $pdo->prepare('DELETE FROM proyectos WHERE id = ?');
 $stmt->execute([$id]);

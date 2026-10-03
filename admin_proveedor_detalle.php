@@ -53,6 +53,9 @@ $proyectosAsignados = $stmtProy->fetchAll();
 
             <div class="contratista-datos">
                 <p><strong>Dirección:</strong> <?php echo htmlspecialchars($p['direccion'] ?: 'No registrada'); ?></p>
+                <?php if ($p['latitud'] && $p['longitud']): ?>
+                    <p><a href="https://www.google.com/maps?q=<?php echo $p['latitud']; ?>,<?php echo $p['longitud']; ?>" target="_blank">📍 Ver en Google Maps</a></p>
+                    <?php endif; ?>
                 <p><strong>RNC/Cédula:</strong> <?php echo htmlspecialchars($p['rnc_cedula'] ?: 'No registrado'); ?></p>
                 <p><strong>Teléfono 1:</strong> <?php echo htmlspecialchars($p['telefono1'] ?: 'No registrado'); ?></p>
                 <p><strong>Teléfono 2:</strong> <?php echo htmlspecialchars($p['telefono2'] ?: 'No registrado'); ?></p>

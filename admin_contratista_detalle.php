@@ -61,6 +61,9 @@ $proyectosAsignados = $stmtProy->fetchAll();
                 <p><strong>Teléfono:</strong> <?php echo htmlspecialchars($c['telefono'] ?: 'No registrado'); ?></p>
                 <p><strong>Cédula:</strong> <?php echo htmlspecialchars($c['cedula'] ?: 'No registrada'); ?></p>
                 <p><strong>Dirección:</strong> <?php echo htmlspecialchars($c['direccion'] ?: 'No registrada'); ?></p>
+                <?php if ($c['latitud'] && $c['longitud']): ?>
+                    <p><a href="https://www.google.com/maps?q=<?php echo $c['latitud']; ?>,<?php echo $c['longitud']; ?>" target="_blank">📍 Ver en Google Maps</a></p>
+                    <?php endif; ?>
 
                 <h3>Referencia 1</h3>
                 <p><?php echo htmlspecialchars($c['ref1_nombre'] ?: 'No registrada'); ?> — <?php echo htmlspecialchars($c['ref1_telefono'] ?: 'Sin teléfono'); ?></p>

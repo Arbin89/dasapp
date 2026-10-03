@@ -8,6 +8,8 @@ require_once 'config.php';
 
 $nombre = trim($_POST['nombre'] ?? '');
 $direccion = trim($_POST['direccion'] ?? '');
+$latitud = $_POST['latitud'] ?: null;
+$longitud = $_POST['longitud'] ?: null;
 $rnc_cedula = trim($_POST['rnc_cedula'] ?? '');
 $telefono1 = trim($_POST['telefono1'] ?? '');
 $telefono2 = trim($_POST['telefono2'] ?? '');
@@ -21,8 +23,8 @@ if (empty($nombre)) {
     exit;
 }
 
-$stmt = $pdo->prepare('INSERT INTO proveedores (nombre, direccion, rnc_cedula, telefono1, telefono2, rubro, referencia_nombre, referencia_telefono) VALUES (?, ?, ?, ?, ?, ?, ?, ?)');
-$stmt->execute([$nombre, $direccion, $rnc_cedula, $telefono1, $telefono2, $rubro, $referencia_nombre, $referencia_telefono]);
+$stmt = $pdo->prepare('INSERT INTO proveedores (nombre, direccion, rnc_cedula, telefono1, telefono2, rubro, referencia_nombre, referencia_telefono, latitud, longitud) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)');
+$stmt->execute([$nombre, $direccion, $rnc_cedula, $telefono1, $telefono2, $rubro, $referencia_nombre, $referencia_telefono, $latitud, $longitud]);
 $nuevoId = $pdo->lastInsertId();
 
 if ($proyecto_id) {
