@@ -735,3 +735,163 @@
 .acciones-contratistas {
     margin: 0 20px 15px 20px;
 }
+
+.kanban {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    padding: 0 20px 40px 20px;
+    text-align: left;
+}
+
+.kanban-columna {
+    flex: 1;
+    min-width: 260px;
+    background-color: #f4f5f7;
+    border-radius: 12px;
+    padding: 14px;
+    transition: background-color 0.2s;
+}
+
+.columna-resaltada {
+    background-color: #e3e6ee;
+}
+
+.kanban-titulo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 700;
+    font-size: 14px;
+    color: #1a1a2e;
+    margin-bottom: 12px;
+}
+
+.kanban-contador {
+    background-color: #fff;
+    border-radius: 20px;
+    padding: 2px 10px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #666;
+}
+
+.kanban-tarjetas {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    min-height: 40px;
+}
+
+.kanban-tarjeta {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 14px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    cursor: grab;
+}
+
+.kanban-tarjeta.arrastrando {
+    opacity: 0.5;
+}
+
+.tarjeta-titulo {
+    display: block;
+    font-weight: 600;
+    font-size: 14px;
+    color: #1a1a2e;
+    text-decoration: none;
+    margin-bottom: 8px;
+}
+
+.tarjeta-titulo:hover {
+    text-decoration: underline;
+}
+
+.etiqueta-categoria {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    background-color: #e8eaf6;
+    color: #3949ab;
+    padding: 3px 10px;
+    border-radius: 20px;
+    margin-bottom: 8px;
+}
+
+.tarjeta-meta {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    font-size: 12px;
+    color: #666;
+    margin-bottom: 8px;
+}
+
+.prioridad {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 6px;
+}
+
+.prioridad-alta {
+    background-color: #ffe0e0;
+    color: #c0392b;
+}
+
+.prioridad-media {
+    background-color: #fff3e0;
+    color: #e65100;
+}
+
+.prioridad-baja {
+    background-color: #e8f5e9;
+    color: #2e7d32;
+}
+
+.fecha-vencida {
+    color: #c0392b;
+    font-weight: 600;
+}
+
+.tarjeta-responsables {
+    display: flex;
+    gap: 4px;
+}
+
+.avatar-mini {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background-color: #1a1a2e;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.kanban-agregar {
+    display: block;
+    margin-top: 10px;
+    padding: 8px;
+    color: #666;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 8px;
+}
+
+.kanban-agregar:hover {
+    background-color: #e3e6ee;
+}
+
+.tarjeta-fechas {
+    font-size: 11px;
+    color: #999;
+    margin-bottom: 8px;
+}

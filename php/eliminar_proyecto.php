@@ -59,6 +59,16 @@ $stmt->execute([$id]);
 $stmt = $pdo->prepare('DELETE FROM proyecto_proveedores WHERE proyecto_id = ?');
 $stmt->execute([$id]);
 
+// Borrar las tareas del proyecto y sus asignaciones
+$stmt = $pdo->prepare('SELECT id FROM tareas WHERE proyecto_id = ?');
+$stmt->execute([$id]);
+foreach ($stmt->fetchAll() as $tarea) {
+    $stmtDel = $pdo->prepare('DELETE FROM tarea_contratistas WHERE tarea_id = ?');
+    $stmtDel->execute([$tarea['id']]);
+}
+$stmt = $pdo->prepare('DELETE FROM tareas WHERE proyecto_id = ?');
+$stmt->execute([$id]);
+
 // 4. Finalmente, borrar el proyecto
 $stmt = $pdo->prepare('DELETE FROM proyectos WHERE id = ?');
 $stmt->execute([$id]);

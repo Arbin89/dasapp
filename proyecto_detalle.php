@@ -31,6 +31,8 @@ $secciones = [
     ['nombre' => 'Tablero de asignaciones', 'archivo' => 'proyecto_tablero.php'],
     ['nombre' => 'Cronograma', 'archivo' => 'proyecto_cronograma.php'],
     ['nombre' => 'Inventario de materiales', 'archivo' => 'proyecto_inventario.php'],
+    ['nombre' => 'Reuniones', 'archivo' => 'proyecto_reuniones.php'],
+    ['nombre' => 'Renders', 'archivo' => 'proyecto_renders.php'],
 ];
 ?>
 <!DOCTYPE html>
@@ -44,27 +46,27 @@ $secciones = [
 </head>
 <body>
     <div class="panel-container">
-        <?php $rutaBase = ''; require 'php/admin_menu.php'; ?>
-        <a href="proyectos.php?empresa_id=<?php echo $proyecto['empresa_id']; ?>" class="volver-link">← Volver a proyectos</a>
+             <?php $rutaBase = ''; require 'php/admin_menu.php'; ?>
 
+        <a href="proyectos.php?empresa_id=<?php echo $proyecto['empresa_id']; ?>" class="volver-link">← Volver a proyectos</a>
         <div class="detalle-layout">
             <div>
                 <h1><?php echo htmlspecialchars($proyecto['nombre']); ?></h1>
                 <p class="proyecto-descripcion-detalle"><?php echo htmlspecialchars($proyecto['descripcion']); ?></p>
-                
+
                 <?php if ($proyecto['estado'] === 'Completado'): ?>
                     <a href="php/actualizar_estado_proyecto.php?id=<?php echo $proyecto['id']; ?>&accion=descompletar" class="btn-completar btn-descompletar" onclick="return confirm('¿Marcar este proyecto como NO completado? Se quitará la fecha de finalización.');">✗ Marcar como no completado</a>
                 <?php else: ?>
                     <a href="php/actualizar_estado_proyecto.php?id=<?php echo $proyecto['id']; ?>&accion=completar" class="btn-completar" onclick="return confirm('¿Marcar este proyecto como completado?');">✓ Marcar como completado</a>
                 <?php endif; ?>
             </div>
-            
+
             <div class="secciones-grid">
-                 <?php foreach ($secciones as $seccion): ?>
+                <?php foreach ($secciones as $seccion): ?>
                     <a href="<?php echo $seccion['archivo']; ?>?proyecto_id=<?php echo $proyecto['id']; ?>" class="seccion-card">
                         <?php echo $seccion['nombre']; ?>
                     </a>
-                 <?php endforeach; ?>
+                <?php endforeach; ?>
             </div>
         </div>
     </div>
