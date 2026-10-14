@@ -8,6 +8,7 @@ require_once 'config.php';
 
 $id = $_GET['id'] ?? null;
 $proyecto_id = $_GET['proyecto_id'] ?? null;
+$album_id = $_GET['album_id'] ?? '';
 
 if (!$id || !$proyecto_id) {
     header('Location: ../dashboard.php');
@@ -25,5 +26,10 @@ if ($foto && file_exists('../' . $foto['ruta_archivo'])) {
 $stmt = $pdo->prepare('DELETE FROM fotos WHERE id = ?');
 $stmt->execute([$id]);
 
-header('Location: ../proyecto_fotos.php?proyecto_id=' . $proyecto_id);
+$destino = '../proyecto_fotos.php?proyecto_id=' . $proyecto_id;
+if ($album_id !== '') {
+    $destino .= '&album_id=' . urlencode($album_id);
+}
+
+header('Location: ' . $destino);
 exit;

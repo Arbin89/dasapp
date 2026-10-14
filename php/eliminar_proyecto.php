@@ -40,6 +40,10 @@ foreach ($stmt->fetchAll() as $plano) {
 $stmt = $pdo->prepare('DELETE FROM planos WHERE proyecto_id = ?');
 $stmt->execute([$id]);
 
+// Borrar las categorías de planos de este proyecto (ya sin planos que las usen)
+$stmt = $pdo->prepare('DELETE FROM categorias_planos WHERE proyecto_id = ?');
+$stmt->execute([$id]);
+
 // Borrar archivos físicos y registros de fotos
 $stmt = $pdo->prepare('SELECT ruta_archivo FROM fotos WHERE proyecto_id = ?');
 $stmt->execute([$id]);
@@ -49,6 +53,10 @@ foreach ($stmt->fetchAll() as $foto) {
     }
 }
 $stmt = $pdo->prepare('DELETE FROM fotos WHERE proyecto_id = ?');
+$stmt->execute([$id]);
+
+// Borrar los álbumes de fotos de este proyecto (ya sin fotos que los usen)
+$stmt = $pdo->prepare('DELETE FROM albumes_fotos WHERE proyecto_id = ?');
 $stmt->execute([$id]);
 
 // Quitar las asignaciones de contratistas de este proyecto (no borra los contratistas en sí)
