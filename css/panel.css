@@ -1255,3 +1255,131 @@
     background-color: #ffe0e0;
     color: #c0392b;
 }
+
+/* Botón "+ Nueva categoría" al final de las pestañas */
+.tab-nueva-categoria {
+    width: auto;
+    margin-top: 0;
+    padding: 8px 18px;
+    border: 1.5px dashed #1a1a2e;
+    border-radius: 20px;
+    background-color: transparent;
+    color: #1a1a2e;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.tab-nueva-categoria:hover {
+    background-color: #f0f0f0;
+}
+
+/* Ventana emergente */
+.dialogo-fondo {
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(15, 15, 30, 0.6);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.dialogo-fondo.abierto {
+    display: flex;
+}
+
+.dialogo-caja {
+    position: relative;
+    width: 100%;
+    max-width: 420px;
+    background-color: #fff;
+    border-radius: 14px;
+    padding: 28px;
+    text-align: left;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+}
+
+.dialogo-titulo {
+    margin: 0 40px 18px 0;
+    padding: 0;
+    font-family: 'Aldrich', sans-serif;
+    font-size: 20px;
+    color: #1a1a2e;
+}
+
+.dialogo-cerrar {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    width: 36px;
+    height: 36px;
+    margin-top: 0;
+    padding: 0;
+    border: none;
+    border-radius: 50%;
+    background-color: #f0f0f0;
+    color: #1a1a2e;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.dialogo-cerrar:hover {
+    background-color: #e0e0e0;
+}
+
+.dialogo-caja label {
+    margin-top: 0;
+}
+
+.dialogo-botones {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.dialogo-botones button {
+    width: auto;
+    margin-top: 0;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+.dialogo-cancelar {
+    background-color: #fff;
+    color: #1a1a2e;
+    border: 1.5px solid #ccc;
+}
+
+.dialogo-cancelar:hover {
+    background-color: #f0f0f0;
+}
+
+.form-mover {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.form-mover select {
+    padding: 5px 8px;
+    border: 1.5px solid #e0e0e0;
+    border-radius: 6px;
+    background-color: #fff;
+    font-size: 12px;
+    font-family: 'Montserrat', Arial, sans-serif;
+}
+
+.form-mover button {
+    width: auto;
+    margin-top: 0;
+    padding: 5px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+}
